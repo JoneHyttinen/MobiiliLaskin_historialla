@@ -48,11 +48,14 @@ export default function App() {
           <Text style={styles.buttonText}>-</Text>
         </Pressable>
       </View>
-      <FlatList
-        data={results}
-        renderItem={({ item }) => <Text>{item}</Text>}
-        keyExtractor={(index) => index.toString()}
-      />
+      <View style={styles.history}>
+        <Text>History</Text>
+        <FlatList
+          data={results}
+          renderItem={({ item }) => <Text>{item}</Text>}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -63,7 +66,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    paddingTop: 40,
   },
   button: {
     backgroundColor: "#30b3ff",
@@ -82,6 +86,11 @@ const styles = StyleSheet.create({
   },
   buttonsRow: {
     flexDirection: "row",
-    marginTop: 12,
+    marginTop: 20,
+  },
+  history: {
+    marginTop: 50,
+    alignItems: "center",
+    alignContent: "center",
   },
 });
